@@ -1,6 +1,6 @@
 import 'dotenv/config';
+import { server } from '@shared/config/env/server';
 import express from 'express';
-import { server } from '../../config/env/server';
 
 export const bootstrapAPI = async () => {
 	const app = express();

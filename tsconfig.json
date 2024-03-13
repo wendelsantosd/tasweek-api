@@ -3,6 +3,12 @@
     "lib": ["ES2023"],
     "target": "ES2022",
     "module": "Node16",
+		"rootDir": "./",
+		"outDir": "./dist",
+		"baseUrl": "./src",
+		"paths": {
+			"@shared/*": ["shared/*"],
+		},
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,
