@@ -5,11 +5,11 @@ interface ITask {
 	description: string;
 }
 
-interface TaskModelInterface extends mongoose.Model<TaskDoc> {
-	build(attr: ITask): TaskDoc;
+interface ITaskModel extends mongoose.Model<ITaskDoc> {
+	build(attr: ITask): ITaskDoc;
 }
 
-interface TaskDoc extends mongoose.Document {
+interface ITaskDoc extends mongoose.Document {
 	title: string;
 	description: string;
 }
@@ -27,7 +27,7 @@ const taskSchema = new mongoose.Schema({
 
 taskSchema.statics.build = (attr: ITask) => new Task(attr);
 
-export const Task = mongoose.model<TaskDoc, TaskModelInterface>(
+export const Task = mongoose.model<ITaskDoc, ITaskModel>(
 	'Task',
 	taskSchema
 );
