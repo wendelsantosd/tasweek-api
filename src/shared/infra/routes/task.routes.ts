@@ -5,4 +5,4 @@ export const taskRouter = Router();
 
 const createTaskController = new CreateTaskController();
 
-taskRouter.get('', createTaskController.handle);
+taskRouter.post('', createTaskController.handle);
