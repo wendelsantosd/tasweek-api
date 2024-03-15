@@ -5,7 +5,7 @@
   "author": "Wendel Santos",
   "license": "MIT",
   "scripts": {
-    "dev": "ts-node-dev -r tsconfig-paths/register src/shared/infra/http/main.ts",
+    "dev": "ts-node-dev --inspect -r tsconfig-paths/register src/shared/infra/http/main.ts",
     "lint": "eslint ./src --ext .ts",
     "lint:fix": "eslint ./src --ext .ts --fix",
     "prettier-format": "prettier --config .prettierrc 'src/**/*.ts' --write"
