@@ -15,7 +15,9 @@ export const createTaskValidation = (
 ) => {
 	const { error } = schema.validate(request.body);
 
-	if (error) return response.status(400).json({message: error.details[0].message});
+	const message = error?.details[0].message;
+
+	if (error) return response.status(400).json({ message });
 
 	next();
 };
