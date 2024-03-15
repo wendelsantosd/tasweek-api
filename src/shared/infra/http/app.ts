@@ -1,4 +1,6 @@
 import 'dotenv/config';
+import 'reflect-metadata';
+import '../../container';
 import express, { json } from 'express';
 import cors from 'cors';
 import { server } from '@shared/config/env/server';

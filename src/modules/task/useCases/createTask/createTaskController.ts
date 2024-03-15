@@ -1,14 +1,22 @@
-import { Task } from '@modules/task/models/task';
 import { Request, Response } from 'express';
+import { container } from 'tsyringe';
+import { CreateTaskUseCase } from './createTaskUseCase';
 
 export class CreateTaskController {
 	async handle(request: Request, response: Response) {
-		const { title, description } = request.body;
+		const { hour, task, day } = request.body;
 
-		const task = Task.build({ title, description });
+		const createTaskUseCase = container.resolve(CreateTaskUseCase);
 
-		const saved = await task.save();
+		const taskCreated = await createTaskUseCase.execute({
+			hour,
+			task,
+			day
+		});
 
-		return response.status(201).json(saved);
+		return response.status(201).json({
+			message: 'Tarefa criada com sucesso!',
+			task: taskCreated
+		});
 	}
 }

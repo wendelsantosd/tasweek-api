@@ -1,25 +1,31 @@
 import mongoose from 'mongoose';
 
 interface ITask {
-	title: string;
-	description: string;
+	hour: string;
+	task: string;
+	day: string;
 }
 
 interface ITaskModel extends mongoose.Model<ITaskDoc> {
 	build(attr: ITask): ITaskDoc;
 }
 
-interface ITaskDoc extends mongoose.Document {
-	title: string;
-	description: string;
+export interface ITaskDoc extends mongoose.Document {
+	hour: string;
+	task: string;
+	day: string;
 }
 
 const taskSchema = new mongoose.Schema({
-	title: {
+	hour: {
 		type: String,
 		require: true
 	},
-	description: {
+	task: {
+		type: String,
+		require: true
+	},
+	day: {
 		type: String,
 		require: true
 	}
@@ -27,7 +33,4 @@ const taskSchema = new mongoose.Schema({
 
 taskSchema.statics.build = (attr: ITask) => new Task(attr);
 
-export const Task = mongoose.model<ITaskDoc, ITaskModel>(
-	'Task',
-	taskSchema
-);
+export const Task = mongoose.model<ITaskDoc, ITaskModel>('Task', taskSchema);
