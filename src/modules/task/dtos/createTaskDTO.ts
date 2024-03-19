@@ -1,7 +1,7 @@
+import { DayProps } from '../model/taskEntity';
+
 export type CreateTaskDTO = {
 	hour: string;
 	task: string;
-	day: Day;
+	day: DayProps;
 };
-
-type Day = 'Segunda-feira' | 'Terça-feira' | 'Quarta-feira' | 'Quinta-feira' | 'Sexta-feira' | 'Sábado' | 'Domingo';

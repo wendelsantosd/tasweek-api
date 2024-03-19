@@ -31,6 +31,6 @@ const taskSchema = new mongoose.Schema({
 	}
 });
 
-taskSchema.statics.build = (attr: ITask) => new Task(attr);
+taskSchema.statics.build = (attr: ITask) => new TaskModel(attr);
 
-export const Task = mongoose.model<ITaskDoc, ITaskModel>('Task', taskSchema);
+export const TaskModel = mongoose.model<ITaskDoc, ITaskModel>('Task', taskSchema);

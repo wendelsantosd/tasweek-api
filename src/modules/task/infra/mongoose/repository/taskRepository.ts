@@ -1,11 +1,22 @@
-import { CreateTaskDTO } from '@modules/task/dtos/createTaskDTO';
-import { ITaskRepository } from '@modules/task/model/taskRepository.interface';
-import { ITaskDoc, Task } from '@modules/task/model/taskSchema';
+import { Task } from '@modules/task/model/taskEntity';
+import { ITaskRepository } from '@modules/task/model/taskRepositoryInterface';
+import { TaskModel } from '@modules/task/model/taskSchema';
+import { DayProps } from '@modules/task/model/taskEntity';
 
 export class TaskRepository implements ITaskRepository {
-	async create(data: CreateTaskDTO): Promise<ITaskDoc> {
-		const builded = Task.build(data);
+	async create(data: Task): Promise<Task> {
+		const builded = TaskModel.build({
+			hour: data.hour,
+			task: data.task,
+			day: data.day
+		});
+
 		const saved = await builded.save();
-		return saved;
+
+		return new Task({
+			hour: saved.hour,
+			task: saved.task,
+			day: saved.day as DayProps
+		});
 	}
 }
