@@ -1,17 +1,18 @@
 export type TaskProps = {
 	hour: string;
 	task: string;
-	day: DayProps;
+	day: DayEnum;
 };
 
-export type DayProps =
-	| 'Segunda-feira'
-	| 'Terça-feira'
-	| 'Quarta-feira'
-	| 'Quinta-feira'
-	| 'Sexta-feira'
-	| 'Sábado'
-	| 'Domingo';
+export enum DayEnum {
+  'Domingo' = 'Domingo',
+	'Segunda-feira' = 'Segunda-feira',
+	'Terça-feira' = 'Terça-feira',
+	'Quarta-feira' = 'Quarta-feira',
+  'Quinta-feira' = 'Quinta-feira',
+  'Sexta-feira' = 'Sexta-feira',
+  'Sábado' = 'Sábado',
+}
 
 export class Task {
 	private props: TaskProps;
@@ -28,7 +29,7 @@ export class Task {
 		return this.props.task;
 	}
 
-	get day(): string {
+	get day(): DayEnum {
 		return this.props.day;
 	}
 }
